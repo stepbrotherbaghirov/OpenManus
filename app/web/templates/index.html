@@ -1,1 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenManus UI</title>
+</head>
+<body>
+    <h1>OpenManus</h1>
+    <form method="post">
+        <textarea name="prompt" rows="6" cols="50" placeholder="Enter your prompt..."></textarea><br>
+        <button type="submit">Send</button>
+    </form>
+    {% if result %}
+        <h2>Response:</h2>
+        <pre>{{ result }}</pre>
+    {% endif %}
+</body>
+</html>
 
