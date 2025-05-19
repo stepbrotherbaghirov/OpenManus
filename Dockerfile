@@ -10,4 +10,4 @@ COPY . .
 
 RUN uv pip install --system -r requirements.txt
 
-CMD ["bash"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "10000"]
