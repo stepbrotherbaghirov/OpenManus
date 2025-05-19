@@ -1,27 +1,26 @@
-import asyncio
+from fastapi import FastAPI, Request, Form
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 
+import asyncio
 from app.agent.manus import Manus
 from app.logger import logger
 
+app = FastAPI()
+templates = Jinja2Templates(directory="app/web/templates")
 
-async def main():
-    # Create and initialize Manus agent
+@app.get("/", response_class=HTMLResponse)
+async def get_form(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+@app.post("/", response_class=HTMLResponse)
+async def handle_prompt(request: Request, prompt: str = Form(...)):
+    if not prompt.strip():
+        return templates.TemplateResponse("index.html", {"request": request, "result": "Empty prompt"})
+
+    logger.warning("Processing your request...")
     agent = await Manus.create()
-    try:
-        prompt = input("Enter your prompt: ")
-        if not prompt.strip():
-            logger.warning("Empty prompt provided.")
-            return
+    result = await agent.run(prompt)
+    await agent.cleanup()
 
-        logger.warning("Processing your request...")
-        await agent.run(prompt)
-        logger.info("Request processing completed.")
-    except KeyboardInterrupt:
-        logger.warning("Operation interrupted.")
-    finally:
-        # Ensure agent resources are cleaned up before exiting
-        await agent.cleanup()
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
+    return templates.TemplateResponse("index.html", {"request": request, "result": result})
