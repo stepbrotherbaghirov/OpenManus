@@ -6,7 +6,7 @@ RUN pip install --no-cache-dir uvicorn
 
 COPY . .
 
-RUN pip install --system -r requirements.txt
+RUN pip install -r requirements.txt
 
 EXPOSE 10000
 
