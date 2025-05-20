@@ -1,10 +1,9 @@
 services:
   - type: web
     name: open-manus
-    env: python
+    env: docker
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    dockerfilePath: Dockerfile
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.8
+      - key: PORT
+        value: 10000
