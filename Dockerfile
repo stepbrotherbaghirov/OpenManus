@@ -2,6 +2,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
+# Установка системных зависимостей
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libjpeg-dev \
@@ -13,9 +14,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# Установка Python-зависимостей
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Если используется playwright
 RUN pip install playwright && playwright install
-RUN apt-get install -y libjpeg-dev zlib1g-dev
 
 COPY . .
 
