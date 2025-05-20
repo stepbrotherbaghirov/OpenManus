@@ -3,13 +3,13 @@ services:
     name: OpenManus
     runtime: docker
     repo: https://github.com/stepbrotherbaghirov/OpenManus 
-    plan: free
+    plan: free  # Убедитесь, что план "free"
     envVars:
       - key: OPENAI_API_KEY
-        value: "YOUR_API_KEY"  # Или оставьте пустым и добавьте через интерфейс
+        value: "YOUR_API_KEY"
       - key: PORT
-        value: "8000"  # Стандартный порт для Render
-    region: oregon
+        value: "8000"
+    region: oregon  # Регион с лучшей производительностью для Free Tier
     dockerContext: .
     dockerfilePath: ./Dockerfile
     autoDeployTrigger: commit
