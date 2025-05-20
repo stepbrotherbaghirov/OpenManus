@@ -8,7 +8,7 @@ tenacity~=9.0.0
 tiktoken~=0.9.0
 googlesearch-python>=2.0.0
 duckduckgo_search~=8.0.0
-baidusearch==1.0.3  # Если новая версия не работает
+baidusearch==1.0.3
 numpy
 datasets~=3.4.1
 html2text~=2024.2.26
