@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Установка Python-зависимостей
 RUN uv pip install playwright && uv playwright install
 
-copy...
+
 
 EXPOSE 8000
 
