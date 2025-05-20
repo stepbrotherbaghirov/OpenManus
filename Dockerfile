@@ -5,18 +5,17 @@ WORKDIR /app
 # Установка системных зависимостей
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
-    zlib1g-dev \      
-    libpng-dev \     
-    ffmpeg \          
-    libsm6 \          
-    libxext6 \        
+    libjpeg-dev \
+    zlib1g-dev \
+    libpng-dev \
+    ffmpeg \
+    libsm6 \
+    libxext6 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Установка Python-зависимостей
-
-# Если используется playwright
-RUN pip install playwright && playwright install
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
