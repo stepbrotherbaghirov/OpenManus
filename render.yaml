@@ -1,9 +1,16 @@
 services:
   - type: web
-    name: open-manus
-    env: docker
+    name: OpenManus
+    runtime: docker
+    repo: https://github.com/stepbrotherbaghirov/OpenManus 
     plan: free
-    dockerfilePath: Dockerfile
     envVars:
+      - key: OPENAI_API_KEY
+        value: "YOUR_API_KEY"  # Или оставьте пустым и добавьте через интерфейс
       - key: PORT
-        value: "10000"
+        value: "8000"  # Стандартный порт для Render
+    region: oregon
+    dockerContext: .
+    dockerfilePath: ./Dockerfile
+    autoDeployTrigger: commit
+version: "1"
