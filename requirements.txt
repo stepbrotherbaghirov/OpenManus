@@ -39,3 +39,5 @@ beautifulsoup4~=4.13.3
 
 huggingface-hub~=0.29.2
 setuptools~=75.8.0
+flask==2.0.1
+gunicorn==20.1.0
