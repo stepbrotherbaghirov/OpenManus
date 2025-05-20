@@ -1,13 +1,12 @@
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-
 import asyncio
 from app.agent.manus import Manus
 from app.logger import logger
 
 app = FastAPI()
-templates = Jinja2Templates(directory="app/web/templates")
+templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
 async def get_form(request: Request):
