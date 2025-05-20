@@ -13,4 +13,4 @@ loguru~=0.7.3
 colorama~=0.4.6
 requests~=2.32.3
 beautifulsoup4~=4.13.3
-uv
+pip
