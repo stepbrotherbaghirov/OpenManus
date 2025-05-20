@@ -4,8 +4,7 @@ WORKDIR /app
 
 # Установка системных зависимостей
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \  
-    libjpeg-dev \     
+    build-essential \
     zlib1g-dev \      
     libpng-dev \     
     ffmpeg \          
