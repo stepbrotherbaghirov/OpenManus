@@ -15,8 +15,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Установка Python-зависимостей
+RUN pip install uv
+RUN playwright install && playwright install-deps
 RUN uv pip install playwright && uv playwright install
 
+
+COPY . .
 
 
 EXPOSE 8000
